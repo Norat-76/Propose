@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        /* Basic page styling */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://cdn.pixabay.com/photo/2017/01/30/15/04/heart-2022974_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4f5a;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6f6f;
+        }
+
+        img {
+            margin-top: 20px;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Do you love me?</h1>
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <script>
+        let swapCount = 0;
+
+        document.getElementById("no").addEventListener("click", function() {
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
+
+            // Swap the buttons back and forth on each "No" press
+            if (swapCount % 2 === 0) {
+                noButton.innerText = "Yes";
+                yesButton.innerText = "No";
+            } else {
+                noButton.innerText = "No";
+                yesButton.innerText = "Yes";
+            }
+
+            // Swap button ids each time to allow further swapping
+            noButton.id = "yes";
+            yesButton.id = "no";
+            swapCount++;
+        });
+
+        document.getElementById("yes").addEventListener("click", function() {
+            // Change the inner HTML to show the love message with a cute gif
+            document.querySelector(".container").innerHTML = `
+                <h1>I love you too, darling ♥️♥️</h1>
+                <img src="https://media.giphy.com/media/l0HlOvJ7yaacpuSas/giphy.gif" alt="Cute Gif">
+            `;
+        });
+    </script>
+</body>
+</html>
